@@ -21,6 +21,7 @@ public class Main
         Integer i = 0; //counter for recursive function
         String calcChoice = null; //User chooses calculation method
 
+
         //Welcome users
         System.out.println("Welcome, this program will create a Fibonacci series based on the number of terms set.");
         System.out.println("A Fibonacci series of numbers is characterized as the following: 0 1 1 2 3, where the sum of the previous two numbers equal the current number.");
@@ -31,7 +32,7 @@ public class Main
 
         //Choose a calculation method
         calcChoice = getCalc(calcChoice);
-        //choose function based off of choice
+        //choose function based off of choice + double check input
         switch(calcChoice){
             case "rec":
                 fiboSeriesRec(terms,num1,num2,i);
@@ -44,7 +45,7 @@ public class Main
                 System.exit(1);
                 break;
         }
-        
+
         //End program messages
         System.out.println("Series Complete!");
 
@@ -129,30 +130,39 @@ public class Main
     //Integer Validation Method
     public static int getTerms(int terms)
     {
-        // Create Scanner
-        Scanner input = new Scanner(System.in);
-        //Set terms
-        terms = 0;
+        //Local Variables
+        terms = 0;//Set terms
+        Boolean goodNumber; //check that input is int
+        Boolean checkNum; //check that num is valid (avoid double error printing)
 
-        //test input
-        try {
-            //ask for input
-            System.out.println("How many terms would you like to calculate?");
-            terms = input.nextInt();
-        }
-        //Handle error
-        catch (InputMismatchException e) {
-            System.out.println("Invalid Input: Please pick a Number of 1 or greater");
-            System.out.println(" ");
-            getTerms(terms);
-        }
+        //Input test loop
+        do {
+            //reset good number check
+            goodNumber = true;
+            checkNum = true;
 
-        if (terms < 1){
-            System.out.println("Invalid Input: Please pick a Number of 1 or greater");
-            System.out.println(" ");
-            getTerms(terms);
-        }
-
+            //test input for integer
+            try {
+                // Create Scanner
+                Scanner input = new Scanner(System.in);
+                //ask for input
+                System.out.println("How many terms would you like to calculate: ");
+                terms = input.nextInt();
+            }
+            //Handle error
+            catch (InputMismatchException ex) {
+                System.out.println("Invalid Input: Please pick a Number");
+                System.out.println(" ");
+                goodNumber = false;
+                checkNum = false; //retry input
+            }
+            //Check against negative numbers or 0
+            if (terms < 1 & checkNum) {
+                System.out.println("Invalid Input: Please pick a Number of 1 or greater");
+                System.out.println(" ");
+                goodNumber = false; //retry input
+            }
+        }while(!goodNumber);
         //Return Value
         return terms;
     }//End of method
@@ -163,19 +173,23 @@ public class Main
         // Create Scanner
         Scanner input = new Scanner(System.in);
 
-        //Catch input errors
-        try {
-            //Ask for input
-            System.out.println("What type of calculation method would you like to use?");
-            System.out.println("type rec for recursive or ite for iterative:");
-            calcChoice = input.next();
-        }
-        catch (InputMismatchException e){
-            System.out.println("Invalid Input: please choose from the stated options.");
-            System.out.println(" ");
-            getCalc(calcChoice);
-        }
+        //Ask for inputs
+        System.out.println("What type of calculation method would you like to use?");
+        System.out.println("type rec for recursive or ite for iterative: ");
+        calcChoice = input.next();
 
+        //Check inputs
+        switch (calcChoice){
+            case "ite":
+                return calcChoice;
+            case "rec":
+                return calcChoice;
+            //if requirements not met, re-call method
+            default:
+                System.out.println("Invalid Input: please choose from the stated options.");
+                System.out.println(" ");
+                getCalc(calcChoice);
+        }//end of switch
         return calcChoice;
     }//End of method
 
