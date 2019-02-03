@@ -16,10 +16,11 @@ public class Main
     public static void main(String[] args) {
         // Assign Variables
         Integer terms = 0; //Number of terms user would like to calculate
-        Integer num1 = 0; // First term to be added
-        Integer num2 = 1; // Second term to be added
+        Long num1 = 0L; // First term to be added
+        Long num2 = 1L; // Second term to be added
         Integer i = 0; //counter for recursive function
         String calcChoice = null; //User chooses calculation method
+
 
         //timer variables
         Long startTime = null;
@@ -65,9 +66,9 @@ public class Main
 
 
     //Recursive Function - only call if terms > 2
-    public static int fiboSeriesRec(int terms, int num1, int num2, int i){
+    public static int fiboSeriesRec(int terms, long num1, long num2, int i){
          //local variables
-        Integer nextTerm;
+        Long nextTerm;
 
         //print only num1
         if(terms == 1) {
@@ -108,11 +109,11 @@ public class Main
 
 
     //Iterative Function
-    public static int fiboSeriesIte(int terms, int num1, int num2){
+    public static int fiboSeriesIte(int terms, long num1, long num2){
         //Set up term to be printed
-        Integer nextTerm;
+        Long nextTerm;
 
-        //Print just the first or firstt 2 if specified
+        //Print just the first or first 2 if specified
             switch (terms) {
                 case 1:
                     System.out.println(num2);
