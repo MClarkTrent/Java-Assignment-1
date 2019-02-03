@@ -12,8 +12,8 @@ public class Main
     public static void main(String[] args) {
         // Assign Variables
         Integer terms = 0; //Number of terms user would like to calculate
-        Long num1 = 0L; // First term to be added
-        Long num2 = 1L; // Second term to be added
+        Long num1 = 1L; // First term to be added
+        Long num2 = 0L; // Second term to be added
         Integer i = 0; //counter for recursive function
         String calcChoice = null; //User chooses calculation method
 
