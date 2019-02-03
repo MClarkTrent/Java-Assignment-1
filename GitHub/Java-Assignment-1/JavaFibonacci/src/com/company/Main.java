@@ -1,6 +1,7 @@
 package com.company;
 
 //Scanner for user input: https://www.programiz.com/java-programming/basic-input-output
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import jdk.internal.util.xml.impl.Input;
 
 import java.util.InputMismatchException;
@@ -170,28 +171,34 @@ public class Main
 
     //Calculation Choice Validation
     public static String getCalc(String calcChoice){
-        // Create Scanner
-        Scanner input = new Scanner(System.in);
+        //Bool variable for loop check
+        Boolean calccheck = false;
+       do {
+           // Create Scanner
+           Scanner input = new Scanner(System.in);
+           //Ask for inputs
+           System.out.println("What type of calculation method would you like to use?");
+           System.out.println("type rec for recursive or ite for iterative: ");
+           calcChoice = input.next();
 
-        //Ask for inputs
-        System.out.println("What type of calculation method would you like to use?");
-        System.out.println("type rec for recursive or ite for iterative: ");
-        calcChoice = input.next();
+           //Check inputs
+           switch (calcChoice) {
+               case "ite":
+                   calccheck = true;
+                   break;
+               case "rec":
+                   calccheck = true;
+                   break;
+               //if requirements not met, re-call method
+               default:
+                   System.out.println("Invalid Input: please choose from the stated options.");
+                   System.out.println(" ");
+                   break;
+           }//end of switch
+       }while(!calccheck);
 
-        //Check inputs
-        switch (calcChoice){
-            case "ite":
-                return calcChoice;
-            case "rec":
-                return calcChoice;
-            //if requirements not met, re-call method
-            default:
-                System.out.println("Invalid Input: please choose from the stated options.");
-                System.out.println(" ");
-                getCalc(calcChoice);
-        }//end of switch
-        return calcChoice;
+       //return value
+       return calcChoice;
     }//End of method
-
 
 }//End of class
