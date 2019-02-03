@@ -22,6 +22,10 @@ public class Main
         Integer i = 0; //counter for recursive function
         String calcChoice = null; //User chooses calculation method
 
+        //timer variables
+        Long startTime = null;
+        Long endTime = null;
+
 
         //Welcome users
         System.out.println("Welcome, this program will create a Fibonacci series based on the number of terms set.");
@@ -33,13 +37,17 @@ public class Main
 
         //Choose a calculation method
         calcChoice = getCalc(calcChoice);
-        //choose function based off of choice + double check input
+        //choose function based off of choice, double check input, time calculation
         switch(calcChoice){
             case "rec":
+                startTime = System.nanoTime();
                 fiboSeriesRec(terms,num1,num2,i);
+                endTime = System.nanoTime();
                 break;
             case "ite":
+                startTime = System.nanoTime();
                 fiboSeriesIte(terms,num1,num2);
+                endTime = System.nanoTime();
                 break;
             default:
                 System.out.println("Error detected: Closing program.");
@@ -50,11 +58,16 @@ public class Main
         //End program messages
         System.out.println("Series Complete!");
 
+        //Print Timer details
+        System.out.println("Total Time: "+(endTime - startTime)+" Milliseconds");
+
+
     }// End of Main Method
 
 
     //Recursive Function - only call if terms > 2
     public static int fiboSeriesRec(int terms, int num1, int num2, int i){
+         //local variables
         Integer nextTerm;
 
         //print only num1
@@ -89,6 +102,7 @@ public class Main
             //Call the function again (recursion)
             fiboSeriesRec(terms,num1,num2, i);
         }
+
         //useless return
         return i;
     }//End of recursive function
