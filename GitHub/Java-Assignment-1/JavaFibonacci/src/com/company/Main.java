@@ -72,16 +72,16 @@ public class Main
         Long nextTerm;
 
         //print only num1
-        if(terms == 1) {
-            System.out.println(num1);
+        if(terms == 1 & i==0) {
+            System.out.println(num2);
             //increment counter far enough to stop recursion
             i = i+5;
         }
 
-        if (i < 3) {
+        if (i < 2) {
             //print first and second term
-            System.out.println(num1);
             System.out.println(num2);
+            System.out.println(num1);
             //add 2 to the counter
             i = i+2;
         }
@@ -94,8 +94,8 @@ public class Main
             System.out.println(nextTerm);
 
             //Adjust num1 and num2
-            num1 = num2;
-            num2 = nextTerm;
+            num2 = num1;
+            num1 = nextTerm;
 
             //Add 1 to the counter variable
             i++;
@@ -104,8 +104,7 @@ public class Main
             fiboSeriesRec(terms,num1,num2, i);
         }
 
-        //useless return
-        return i;
+        return terms;
     }//End of recursive function
 
 
@@ -134,8 +133,8 @@ public class Main
                         System.out.println(nextTerm);
 
                         //adjust num1 and num2
-                        num1 = num2;
-                        num2 = nextTerm;
+                        num2 = num1;
+                        num1 = nextTerm;
                     }//end of loop
             }//end of switch
         //Useless return
