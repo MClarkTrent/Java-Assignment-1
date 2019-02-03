@@ -12,7 +12,6 @@ public class Main
     // Matt Clark (0598737)
     // This Program will create a fibonacci sequence with a number of terms specified by the user
     // This will be done both through recursion and through iteration to find the pros and cons of each technique
-    //Last push to GitHub - Feb 2nd, 2019 @ 3:32pm
 
     public static void main(String[] args) {
         // Assign Variables
