@@ -19,7 +19,7 @@ public class Main
         Integer num1 = 0; // First term to be added
         Integer num2 = 1; // Second term to be added
         Integer i = 0; //counter for recursive function
-
+        String calcChoice = null; //User chooses calculation method
 
         //Welcome users
         System.out.println("Welcome, this program will create a Fibonacci series based on the number of terms set.");
@@ -29,11 +29,23 @@ public class Main
         //Find amount of terms to calculate
         terms = getTerms(terms);
 
-        //Testing if Iterative works
-        fiboSeriesRec(terms, num1, num2, i);
-
-
-        //End program
+        //Choose a calculation method
+        calcChoice = getCalc(calcChoice);
+        //choose function based off of choice
+        switch(calcChoice){
+            case "rec":
+                fiboSeriesRec(terms,num1,num2,i);
+                break;
+            case "ite":
+                fiboSeriesIte(terms,num1,num2);
+                break;
+            default:
+                System.out.println("Error detected: Closing program.");
+                System.exit(1);
+                break;
+        }
+        
+        //End program messages
         System.out.println("Series Complete!");
 
     }// End of Main Method
@@ -143,6 +155,28 @@ public class Main
 
         //Return Value
         return terms;
+    }//End of method
+
+
+    //Calculation Choice Validation
+    public static String getCalc(String calcChoice){
+        // Create Scanner
+        Scanner input = new Scanner(System.in);
+
+        //Catch input errors
+        try {
+            //Ask for input
+            System.out.println("What type of calculation method would you like to use?");
+            System.out.println("type rec for recursive or ite for iterative:");
+            calcChoice = input.next();
+        }
+        catch (InputMismatchException e){
+            System.out.println("Invalid Input: please choose from the stated options.");
+            System.out.println(" ");
+            getCalc(calcChoice);
+        }
+
+        return calcChoice;
     }//End of method
 
 
