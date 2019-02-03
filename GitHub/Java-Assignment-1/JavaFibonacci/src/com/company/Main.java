@@ -58,7 +58,7 @@ public class Main
         System.out.println("Series Complete!");
 
         //Print Timer details
-        System.out.println("Total Time: "+(endTime - startTime)+" Milliseconds");
+        System.out.println("Total Time: "+(endTime - startTime)+" Nano Seconds");
 
 
     }// End of Main Method
