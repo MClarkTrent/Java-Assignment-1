@@ -1,9 +1,5 @@
 package com.company;
 
-//Scanner for user input: https://www.programiz.com/java-programming/basic-input-output
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import jdk.internal.util.xml.impl.Input;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -57,7 +53,12 @@ public class Main
 
         //End program messages
         System.out.println("Series Complete!");
+        System.out.println(" ");
 
+        //Method
+        System.out.println("Calculation Method: "+calcChoice);
+        //number of terms
+        System.out.println("Number of Terms: "+terms);
         //Print Timer details
         System.out.println("Total Time: "+(endTime - startTime)+" Nano Seconds");
 
